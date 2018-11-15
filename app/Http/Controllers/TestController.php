@@ -12,4 +12,8 @@ class TestController extends Controller
     {
         return User::all();
     }
+    public function page()
+    {
+        return view('page');
+    }
 }

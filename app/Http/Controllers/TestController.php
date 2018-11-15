@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,8 +11,8 @@ class TestController extends Controller
     {
         return User::all();
     }
-    public function page()
+    public function welcome()
     {
-        return view('page');
+        return view('welcome');
     }
 }

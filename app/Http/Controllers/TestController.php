@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
 {
-    public function index()
+    public function db()
     {
         return User::all();
     }
@@ -22,5 +22,9 @@ class TestController extends Controller
         Redis::set('name', 'aen233');
         $values = Redis::get('name');
         dd($values);
+    }
+    public function info()
+    {
+        echo phpinfo();
     }
 }

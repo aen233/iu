@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -29,10 +32,10 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     * @param  \Exception $exception
      *
-     * @param  \Exception  $exception
      * @return void
+     * @throws Exception
      */
     public function report(Exception $exception)
     {
@@ -42,12 +45,54 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $exception
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof BaseException
+            || $exception instanceof HttpException
+            || $exception instanceof ValidationException) {
+            return $this->error($exception);
+        }
+
         return parent::render($request, $exception);
+    }
+
+    /**
+     * 自定义错误输出
+     *
+     * @param $exception
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    private function error($exception)
+    {
+        $statusCode = 500;
+        if ($exception instanceof ValidationException) {
+            $code    = $exception->status;
+            $message = current(current(array_values($exception->errors())));
+        } else {
+            $code    = $exception->getCode() ?: $exception->getStatusCode();
+            $message = $exception->getMessage();
+        }
+
+        $response = [
+            'id'      => md5(uniqid()),
+            'code'    => $code,
+            'status'  => $statusCode,
+            'message' => $message,
+            'error'   => 'ERROR',
+        ];
+
+        if ($exception instanceof BaseException && $exception->getData()) {
+            $response['data'] = $exception->getData();
+        }
+
+        Log::error('Response Error: ' . json_encode($response, JSON_UNESCAPED_UNICODE));
+
+        return response()->json($response, $statusCode, [], JSON_UNESCAPED_UNICODE);
     }
 }

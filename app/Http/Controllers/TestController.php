@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
@@ -12,6 +11,7 @@ class TestController extends Controller
     {
         return User::all();
     }
+
     public function welcome()
     {
         return view('welcome');
@@ -23,6 +23,7 @@ class TestController extends Controller
         $values = Redis::get('name');
         dd($values);
     }
+
     public function info()
     {
         echo phpinfo();

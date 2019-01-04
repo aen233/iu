@@ -13,5 +13,6 @@
 
 Route::apiResources([
     'products' => 'ProductController',
-    'product-sku' => 'ProductSkuController'
+    'product-sku' => 'ProductSkuController',
+    'crowdfunding_products' => 'CrowdfundingProductController'
 ]);

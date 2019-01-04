@@ -73,5 +73,9 @@ class RouteServiceProvider extends ServiceProvider
             ->prefix('shop')
             ->namespace($this->namespace.'\Shop')
             ->group(base_path('routes/shop.php'));
+        Route::middleware('api')
+            ->prefix('blog')
+            ->namespace($this->namespace.'\Blog')
+            ->group(base_path('routes/blog.php'));
     }
 }

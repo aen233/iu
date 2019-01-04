@@ -20,7 +20,7 @@ return [
     ],
 
     'ses' => [
-        'key' => env('SES_KEY'),
+        'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => env('SES_REGION', 'us-east-1'),
     ],
@@ -29,10 +29,14 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
-    'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
+    'stripe'          => [
+        'model'  => App\Models\User::class,
+        'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+    'baidu_translate' => [
+        'appid' => env('BAIDU_TRANSLATE_APPID', '20190104000254526'),
+        'key'   => env('BAIDU_TRANSLATE_KEY', '3yzrZYvoM4ubbomrhiLF'),
     ],
 
 ];

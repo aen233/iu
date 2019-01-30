@@ -32,7 +32,7 @@ class IndexController extends Controller
                 ->with('data', $data);
         }
 
-        return success(['crs_version' => 'v.01']);
+        return success(['version' => 'v.01']);
     }
 
 }

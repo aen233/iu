@@ -19,7 +19,7 @@ class CreateShopProductSkusTable extends Migration
             $table->string('description')->default('')->comment('SKU 描述');
             $table->decimal('price', 10, 2)->comment('SKU 价格');
             $table->unsignedInteger('stock')->comment('库存');
-            $table->json('attributes')->comment('SKU 属性值json')->nullable();
+            $table->text('attributes')->comment('SKU 属性值json')->nullable();
             $table->unsignedInteger('product_id')->comment('所属商品 id');
             $table->foreign('product_id')->references('id')->on('shop_products')->onDelete('cascade');
             $table->timestamps();

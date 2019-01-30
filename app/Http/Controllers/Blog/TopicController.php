@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Jobs\Blog\TranslateSlug;
 use App\Models\Blog\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;

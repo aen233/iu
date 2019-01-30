@@ -25,7 +25,7 @@ class CreateShopProductsTable extends Migration
             $table->unsignedInteger('sold_count')->default(0)->comment('销量');
             $table->unsignedInteger('review_count')->default(0)->comment('评价数量');
             $table->decimal('price', 10, 2)->comment('SKU 最低价格');
-            $table->json('attributes')->nullable()->comment('商品属性json');
+            $table->text('attributes')->nullable()->comment('商品属性json');
             $table->timestamps();
         });
     }

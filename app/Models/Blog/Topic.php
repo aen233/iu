@@ -3,12 +3,20 @@
 namespace App\Models\Blog;
 
 use App\Models\User;
+use App\Observers\TopicObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
 {
     protected $table = 'blog_topics';
     //
+
+    public static function boot()
+    {
+        parent::boot();
+        static::observe(TopicObserver::class);
+    }
+
     protected $fillable = [
         'title',
         'body',

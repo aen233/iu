@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Log;
 
 class Access
 {
@@ -17,9 +16,10 @@ class Access
      */
     public function handle($request, Closure $next)
     {
-        Log::debug('Request Url: ' . $request->url());
-        Log::debug('Request Method: ' . $request->method());
-        Log::debug('Request Params: ', $request->all());
+        iuLog('debug', 'Request Url: ' . $request->url());
+        iuLog('debug', 'Request Method: ' . $request->method());
+        iuLog('debug', 'Request Params: ', $request->all());
+        iuLog(PHP_EOL);
 
         return $next($request);
     }

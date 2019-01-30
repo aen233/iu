@@ -41,6 +41,10 @@ class TopicController extends Controller
      */
     public function store(Request $request, Topic $topic)
     {
+//        $request->validate([
+//            'title' => 'required|unique:posts|max:255',
+//            'body' => 'required',
+//        ]);
         $topic->fill($request->all());
         $topic->user_id = Auth::id() ?? User::first()->id;
 

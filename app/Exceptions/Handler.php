@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Validation\ValidationException;
 
@@ -54,7 +54,9 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof BaseException
             || $exception instanceof HttpException
-            || $exception instanceof ValidationException) {
+            || $exception instanceof ValidationException
+            || $exception instanceof QueryException
+        ) {
             return $this->error($exception);
         }
 
@@ -91,8 +93,8 @@ class Handler extends ExceptionHandler
             $response['data'] = $exception->getData();
         }
 
-        Log::error('Response Error: ' . json_encode($response, JSON_UNESCAPED_UNICODE));
+        iuLog('error', 'Response Error: ', $response);
 
-        return response()->json($response, $statusCode, [], JSON_UNESCAPED_UNICODE);
+        return response()->json($response, $statusCode, [], 320);
     }
 }

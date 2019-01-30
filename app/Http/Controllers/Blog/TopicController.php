@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Blog;
 
+use App\Exceptions\BaseException;
 use App\Models\Blog\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,10 +42,11 @@ class TopicController extends Controller
      */
     public function store(Request $request, Topic $topic)
     {
-//        $request->validate([
-//            'title' => 'required|unique:posts|max:255',
-//            'body' => 'required',
-//        ]);
+        $request->validate([
+            'title'       => 'required',
+            'body'        => 'required',
+            'category_id' => 'required'
+        ]);
         $topic->fill($request->all());
         $topic->user_id = Auth::id() ?? User::first()->id;
 

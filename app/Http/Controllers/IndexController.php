@@ -18,7 +18,7 @@ class IndexController extends Controller
 
         // 如果是开发环境才输出日志
         if ($env === 'dev' || $env === 'local') {
-            $file = empty($request->get('file')) ? date('Y/m/d/\h-H', time()) . '.log' : $request->get('file');
+            $file = empty($request->get('file')) ? date('Y/m/d') . '-iu.log' : $request->get('file');
             $file = storage_path('logs/' . $file);
 
             if (!file_exists($file)) {

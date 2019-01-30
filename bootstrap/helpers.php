@@ -50,10 +50,15 @@ if (!function_exists('iuLog')) {
      */
     function iuLog($level, $desc = '', $data = [], $filename = '')
     {
-        $filename = $filename ?: date('Y/m/d/\h-H').'-iu';
+        $logPath = storage_path().'/logs/'.date('Y/m/');
+
+        if (!file_exists($logPath)) {
+            mkdir($logPath, 0777, true);
+        }
+        $filename = $filename ?: date('d').'-iu';
         // 记录日志
 
-        $dir = storage_path() . '/logs/' . $filename . '.log';
+        $dir = $logPath . $filename . '.log';
         if ($level == PHP_EOL) {
             file_put_contents($dir, PHP_EOL, FILE_APPEND);
 

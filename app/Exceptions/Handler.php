@@ -16,7 +16,8 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        QueryException::class,
+        BaseException::class,
     ];
 
     /**

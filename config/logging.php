@@ -38,12 +38,9 @@ return [
             'channels' => ['single'],
         ],
 
-        // 修改日志生成规则
-        // logs/{year}/{month}/{day}/h-{H}.log
         'single' => [
             'driver' => 'single',
-//            'path' => storage_path('logs/laravel.log'),
-            'path' => storage_path('logs/'.date('Y/m/d/\h-H', time()).'.log'),
+            'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
         ],
 

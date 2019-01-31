@@ -6,38 +6,20 @@
  * Time: 19:24
  */
 
-if (!function_exists('success')) {
+
+if (!function_exists('getSql')) {
     /**
-     * @param null $data
+     * 获取执行sql
      *
-     * @return array|null
-     */
-    function success($data = null)
-    {
-        return is_null($data)
-            ? ['code' => 0, 'message' => 'success']
-            : ((is_array($data) && empty($data))
-                ? ['data' => []]
-                : (array_has($data, 'data') ? $data : ['data' => $data]));
-    }
-}
-
-if (!function_exists('error')) {
-    /**
-     * @param       $code
-     * @param array $args
+     * @param $query
      *
-     * @throws \App\Exceptions\BaseException
+     * @return string
      */
-    function error($code, $args = [])
+    function getSql($query)
     {
-        $message = empty(config('code.' . $code)) ? '未知的错误' : config('code.' . $code);
+        $sql = str_replace("?", "'%s'", $query->toSql());
 
-        if (!empty($args)) {
-            $message = vsprintf($message, $args);
-        }
-
-        throw new \App\Exceptions\BaseException($message, $code);
+        return vsprintf($sql, $query->getBindings());
     }
 }
 
@@ -50,12 +32,12 @@ if (!function_exists('iuLog')) {
      */
     function iuLog($level, $desc = '', $data = [], $filename = '')
     {
-        $logPath = storage_path().'/logs/'.date('Y/m/');
+        $logPath = storage_path() . '/logs/' . date('Y/m/');
 
         if (!file_exists($logPath)) {
             mkdir($logPath, 0777, true);
         }
-        $filename = $filename ?: date('d').'-iu';
+        $filename = $filename ?: date('d') . '-iu';
         // 记录日志
 
         $dir = $logPath . $filename . '.log';
@@ -71,13 +53,9 @@ if (!function_exists('iuLog')) {
 
             return;
         }
-        //            JSON_UNESCAPED_UNICODE
-        //            JSON_UNESCAPED_SLASHES
-        file_put_contents(
-            $dir,
-            $prefix . $desc . json_encode($data, 320) . PHP_EOL .
-            var_export($data, true) . PHP_EOL,
-            FILE_APPEND
-        );
+        //            JSON_UNESCAPED_UNICODE（中文不转为unicode ，对应的数字 256）
+        //            JSON_UNESCAPED_SLASHES（不转义反斜杠，对应的数字 64）
+        //            JSON_UNESCAPED_UNICODE + JSON_UNESCAPED_SLASHES = 320
+        file_put_contents($dir, $prefix . $desc . json_encode($data, 320) . PHP_EOL, FILE_APPEND);
     }
 }

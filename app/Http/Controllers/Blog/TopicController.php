@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Exceptions\BaseException;
 use App\Models\Blog\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,11 +13,14 @@ class TopicController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Topic   $topic
+     *
+     * @return array
      */
-    public function index()
+    public function index(Request $request, Topic $topic)
     {
-        //
+        return $topic->paginate($request->per_page ?? 15);
     }
 
     /**
@@ -32,13 +34,10 @@ class TopicController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param Request $request
+     * @param Topic   $topic
      *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @param Topic                     $topic
-     *
-     * @return array|null
+     * @return Topic
      */
     public function store(Request $request, Topic $topic)
     {
@@ -54,7 +53,7 @@ class TopicController extends Controller
         $topic->excerpt = $this->make_excerpt($topic->body);
         $topic->save();
 
-        return success($topic);
+        return $topic;
     }
 
     /**
@@ -63,7 +62,7 @@ class TopicController extends Controller
      * @param Request $request
      * @param Topic   $topic
      *
-     * @return \Illuminate\Http\Response
+     * @return Topic|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function show(Request $request, Topic $topic)
     {
@@ -71,7 +70,7 @@ class TopicController extends Controller
             return redirect($topic->link(), 301);
         }
 
-        return success($topic);
+        return $topic;
     }
 
     /**
@@ -92,11 +91,20 @@ class TopicController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @param  int                      $id
      *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function update(Request $request, $id)
     {
-        //
+        return [
+            'data' => [
+                [112],
+                [222]
+            ],
+            'meta' => [
+                'total'    => 2,
+                'per_page' => 2
+            ]
+        ];
     }
 
     /**

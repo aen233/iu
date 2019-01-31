@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Access;
+use App\Http\Middleware\After;
 use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -42,11 +43,13 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            Access::class
+            Access::class,
+            After::class
         ],
 
         'api' => [
             Access::class,
+            After::class,
             'throttle:60,1',
             'bindings',
         ],
@@ -68,6 +71,7 @@ class Kernel extends HttpKernel
         'guest'         => RedirectIfAuthenticated::class,
         'signed'        => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'access'        => Access::class
+        'access'        => Access::class,
+        'after'         => After::class
     ];
 }

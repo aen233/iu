@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index')->name('index');
-Route::get('/doc/{name}', 'DocController@index')->name('index');
+Route::get('/doc/{name}', 'DocController@index')->name('doc');
 
 Auth::routes();
 

@@ -6,7 +6,6 @@
  * Time: 19:24
  */
 
-
 if (!function_exists('getSql')) {
     /**
      * 获取执行sql
@@ -46,7 +45,7 @@ if (!function_exists('iuLog')) {
 
             return;
         }
-        $prefix = '[' . now() . '] ' . env('APP_ENV') . '.' . strtoupper($level) . ': ';
+        $prefix = '[' . now() . '] ' . app()->environment() . '.' . strtoupper($level) . ': ';
 
         if (!$data) {
             file_put_contents($dir, $prefix . $desc . PHP_EOL, FILE_APPEND);

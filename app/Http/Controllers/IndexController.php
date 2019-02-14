@@ -14,10 +14,8 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        $env = config('app.env');
-
         // 如果是开发环境才输出日志
-        if ($env === 'dev' || $env === 'local') {
+        if (app()->environment('local', 'dev')) {
             $file = empty($request->get('file')) ? date('Y/m/d') . '-iu.log' : $request->get('file');
             $file = storage_path('logs/' . $file);
 
@@ -32,7 +30,7 @@ class IndexController extends Controller
                 ->with('data', $data);
         }
 
-        return success(['version' => 'v.01']);
+        return ['version' => 'v.01'];
     }
 
 }

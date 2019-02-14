@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 class After
 {
     /**
-     * 记录访问日志
+     * 记录响应日志,处理成功返回自定义格式
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure                 $next

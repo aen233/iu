@@ -40,11 +40,16 @@ if (!function_exists('iuLog')) {
         // 记录日志
 
         $dir = $logPath . $filename . '.log';
+
         if ($level == PHP_EOL) {
+            if ($desc ?? '') {
+                $dir = $logPath . $desc . '.log';
+            }
             file_put_contents($dir, PHP_EOL, FILE_APPEND);
 
             return;
         }
+
         $prefix = '[' . now() . '] ' . app()->environment() . '.' . strtoupper($level) . ': ';
 
         if (!$data) {

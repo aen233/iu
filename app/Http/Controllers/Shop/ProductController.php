@@ -57,6 +57,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+//        $detail = $product->with('skus')->get();
+//        return $detail;
         return new ProductResource($product);
     }
 

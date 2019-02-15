@@ -39,7 +39,7 @@ class ProductSkuController extends Controller
         $product = Product::latest()->first();
         $insert  = $product->skus()->create($request->all());
 
-        return success($insert);
+        return $insert;
     }
 
     /**

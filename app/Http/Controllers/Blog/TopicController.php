@@ -76,11 +76,12 @@ class TopicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param Request $request
+     * @param Topic   $topic
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function edit($id)
+    public function edit(Request $request, Topic $topic)
     {
         //
     }

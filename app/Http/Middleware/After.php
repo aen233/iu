@@ -23,12 +23,16 @@ class After
         if ($response instanceof JsonResponse) {
             $oriData = $response->getData();
 
+            if ($oriData->code ?? 0) {
+                return $response;
+            }
+
             $message = [
                 'code'    => 0,
                 'message' => 'success',
             ];
 
-            $data['data'] = ($oriData->data ?? []) ? $oriData->data : $oriData;
+            $data['data'] = isset($oriData->data) ? $oriData->data : $oriData;
 
             if ($oriData->current_page ?? '') {
                 $data['meta'] = [
@@ -51,6 +55,7 @@ class After
             $temp = ($oriData) ? array_merge($message, $data) : $message;
 
             $response = $response->setData($temp);
+
             iuLog('debug', 'Response Success: ', $response->getData());
             iuLog(PHP_EOL);
         }

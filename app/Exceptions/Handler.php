@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -57,6 +58,7 @@ class Handler extends ExceptionHandler
             || $exception instanceof HttpException
             || $exception instanceof ValidationException
             || $exception instanceof QueryException
+            || $exception instanceof ModelNotFoundException
         ) {
             return $this->error($exception);
         }
@@ -78,7 +80,7 @@ class Handler extends ExceptionHandler
             $code    = $exception->status;
             $message = current(current(array_values($exception->errors())));
         } else {
-            $code    = $exception->getCode() ?: $exception->getStatusCode();
+            $code    = $exception->getCode() ?: ($exception->statusCode ?? 404);
             $message = $exception->getMessage();
         }
 
@@ -95,6 +97,7 @@ class Handler extends ExceptionHandler
         }
 
         iuLog('error', 'Response Error: ', $response);
+        iuLog(PHP_EOL);
 
         return response()->json($response, $statusCode, [], 320);
     }

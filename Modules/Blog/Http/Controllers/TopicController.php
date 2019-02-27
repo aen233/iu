@@ -18,10 +18,9 @@ class TopicController extends Controller
      *
      * @return array
      */
-    public function index()
+    public function index(Request $request, Topic $topic)
     {
-        dd(222);
-//        return $topic->paginate($request->per_page ?? 15);
+        return $topic->paginate($request->per_page ?? 15);
     }
 
     /**

@@ -56,6 +56,40 @@ return [
             'timezone'    => env('DB_TIMEZONE', '+00:00'),
         ],
 
+        'mysql_blog' => [
+            'driver'      => 'mysql',
+            'host'        => env('DB_HOST', '127.0.0.1'),
+            'port'        => env('DB_PORT', '3306'),
+            'database'    => env('DB_DATABASE', 'forge'),
+            'username'    => env('DB_USERNAME', 'forge'),
+            'password'    => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset'     => 'utf8mb4',
+            'collation'   => 'utf8mb4_unicode_ci',
+            'prefix'      => 'blog_',
+            'strict'      => true,
+            'engine'      => null,
+            // 部分数据库存在时区错误问题
+            'timezone'    => env('DB_TIMEZONE', '+00:00'),
+        ],
+
+        'mysql_shop' => [
+            'driver'      => 'mysql',
+            'host'        => env('DB_HOST', '127.0.0.1'),
+            'port'        => env('DB_PORT', '3306'),
+            'database'    => env('DB_DATABASE', 'forge'),
+            'username'    => env('DB_USERNAME', 'forge'),
+            'password'    => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset'     => 'utf8mb4',
+            'collation'   => 'utf8mb4_unicode_ci',
+            'prefix'      => 'shop_',
+            'strict'      => true,
+            'engine'      => null,
+            // 部分数据库存在时区错误问题
+            'timezone'    => env('DB_TIMEZONE', '+00:00'),
+        ],
+
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', '127.0.0.1'),
@@ -115,6 +149,7 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port'     => env('REDIS_PORT', 6379),
             'database' => 0,
+            'prefix'   => 'iu:'
         ],
 
     ],

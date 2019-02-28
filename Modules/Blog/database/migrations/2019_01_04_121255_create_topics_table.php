@@ -13,7 +13,7 @@ class CreateTopicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_topics', function (Blueprint $table) {
+        Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->index()->comment('帖子标题');
             $table->text('body')->comment('帖子内容');
@@ -36,6 +36,6 @@ class CreateTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_topics');
+        Schema::dropIfExists('topics');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateProductSkuAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_categories', function (Blueprint $table) {
+        Schema::create('product_sku_attributes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->index()->comment('名称');
-            $table->text('description')->nullable()->comment('描述');
-            $table->integer('post_count')->default(0)->comment('帖子数');
+            $table->string('name')->comment('商品sku属性');
+            $table->unsignedInteger('product_id')->comment('所属商品 id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_categories');
+        Schema::dropIfExists('product_sku_attributes');
     }
 }

@@ -33,7 +33,7 @@ class SeedCategoriesData extends Migration
             ],
         ];
 
-        DB::table('blog_categories')->insert($categories);
+        DB::table('categories')->insert($categories);
     }
 
     /**
@@ -43,6 +43,6 @@ class SeedCategoriesData extends Migration
      */
     public function down()
     {
-        DB::table('blog_categories')->truncate();
+        DB::table('categories')->truncate();
     }
 }

@@ -14,7 +14,7 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type')->default(Product::TYPE_NORMAL)->index()->comment('商品类型');
             $table->string('title')->comment('商品名称');
@@ -37,6 +37,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_products');
+        Schema::dropIfExists('products');
     }
 }

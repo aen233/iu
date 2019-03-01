@@ -14,6 +14,7 @@ class DocController extends Controller
         }
 
         $doc = storage_path('doc/');
+//        $doc = realpath(__Dir__.'/../../Doc/').'/';
         $config = file_get_contents($doc.'config.json');
         $config = json_decode($config, true);
 
@@ -29,6 +30,7 @@ class DocController extends Controller
         $html = $parseDown->text(file_get_contents($docPath));
 
         return view('document')
+            ->with('doc', $doc)
             ->with('html', $html)
             ->with('config', $config);
     }

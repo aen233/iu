@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use ErrorException;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
@@ -59,6 +60,7 @@ class Handler extends ExceptionHandler
             || $exception instanceof ValidationException
             || $exception instanceof QueryException
             || $exception instanceof ModelNotFoundException
+            || $exception instanceof ErrorException
         ) {
             return $this->error($exception);
         }

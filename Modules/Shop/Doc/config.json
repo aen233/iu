@@ -1,0 +1,12 @@
+[
+  {
+    "path": "Product",
+    "name": "商品",
+    "children": [
+      {
+        "path": "product",
+        "name": "商品"
+      }
+    ]
+  }
+]

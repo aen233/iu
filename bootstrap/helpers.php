@@ -31,12 +31,19 @@ if (!function_exists('iuLog')) {
      */
     function iuLog($level, $desc = '', $data = [], $filename = '')
     {
-        $logPath = storage_path() . '/logs/' . date('Y/m/');
+        $module    = title_case(substr(request()->path(), 0, strpos(request()->path(), '/')));
+        $moduleArr = array_where(scandir(base_path('modulesgh')), function ($value) {
+            return !starts_with($value, '.');
+        });
+
+        $logPath = in_array($module, $moduleArr)
+            ? base_path('modulesgh/') . $module . '/Logs/' . date('Y/m/')
+            : storage_path() . '/logs/' . date('Y/m/');
 
         if (!file_exists($logPath)) {
             mkdir($logPath, 0777, true);
         }
-        $filename = $filename ?: date('d') . '-iu';
+        $filename = $filename ?: date('d');
         // 记录日志
 
         $dir = $logPath . $filename . '.log';

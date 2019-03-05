@@ -2,6 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
+use App\Exceptions\BaseException;
 use Blog\Models\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class TopicController extends Controller
      */
     public function index(Request $request, Topic $topic)
     {
+        throw new BaseException('ert',403,['rty','678']);
         return $topic->paginate($request->per_page ?? 15);
     }
 

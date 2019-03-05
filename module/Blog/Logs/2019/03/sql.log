@@ -1,0 +1,12 @@
+[2019-03-04 15:43:41] local.DEBUG: sql: "select count(*) as aggregate from `blog_topics`"
+[2019-03-04 15:43:41] local.DEBUG: sql.time: 477.82
+
+[2019-03-04 15:43:41] local.DEBUG: sql: "select * from `blog_topics` limit 15 offset 0"
+[2019-03-04 15:43:41] local.DEBUG: sql.time: 12.7
+
+[2019-03-04 18:00:20] local.DEBUG: sql: "select * from `users` limit 1"
+[2019-03-04 18:00:20] local.DEBUG: sql.time: 51.7
+
+[2019-03-04 18:00:20] local.DEBUG: sql: "insert into `blog_topics` (`title`, `body`, `category_id`, `user_id`, `excerpt`, `updated_at`, `created_at`) values (我最喜欢你, 二四六七八, 3, 1, 二四六七八, 2019-03-04 18:00:20, 2019-03-04 18:00:20)"
+[2019-03-04 18:00:20] local.DEBUG: sql.time: 250.07
+

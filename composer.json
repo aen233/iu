@@ -29,6 +29,7 @@
         "psr-4": {
             "App\\": "app/",
             "Blog\\": "modules/Blog",
+            "Common\\": "modules/Common",
             "Shop\\": "modules/shop"
         },
         "files": [

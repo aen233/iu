@@ -31,7 +31,7 @@ class DocHandler
 
         return view('doc')
             ->with('doc', $doc)
-            ->with('module', $module)
+            ->with('modules', $module)
             ->with('html', $html)
             ->with('config', $config);
     }

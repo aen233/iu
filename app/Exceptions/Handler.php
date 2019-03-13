@@ -2,12 +2,15 @@
 
 namespace App\Exceptions;
 
+use Common\Exceptions\BaseException;
 use ErrorException;
 use Exception;
+use InvalidArgumentException;
+use ReflectionException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
@@ -18,8 +21,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        QueryException::class,
-        BaseException::class,
+        //
     ];
 
     /**
@@ -58,9 +60,11 @@ class Handler extends ExceptionHandler
         if ($exception instanceof BaseException
             || $exception instanceof HttpException
             || $exception instanceof ValidationException
+            || $exception instanceof InvalidArgumentException
             || $exception instanceof QueryException
             || $exception instanceof ModelNotFoundException
             || $exception instanceof ErrorException
+            || $exception instanceof ReflectionException
         ) {
             return $this->error($exception);
         }

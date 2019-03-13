@@ -3,6 +3,7 @@
 namespace Common\Http\Handlers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LogHandler
 {
@@ -10,9 +11,9 @@ class LogHandler
     {
         // 如果是开发环境才输出日志
         if (app()->environment('local', 'dev')) {
-            $module = title_case($module);
+            $module = Str::title($module);
             $file = empty($request->get('file')) ? date('Y/m/d') . '.log' : $request->get('file');
-            $file = base_path('modulesgh/' . $module . '/Logs/'. $file);
+            $file = base_path('modules/' . $module . '/Logs/'. $file);
 
             if (!file_exists($file)) {
                 return '日志不存在';

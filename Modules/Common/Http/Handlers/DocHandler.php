@@ -13,7 +13,7 @@ class DocHandler
             return [];
         }
 
-        $doc = base_path('modulesgh/' . $module . '/Doc/');
+        $doc = base_path('modules/' . $module . '/Doc/');
 
         $config = file_get_contents($doc . 'config.json');
         $config = json_decode($config, true);
@@ -31,7 +31,7 @@ class DocHandler
 
         return view('doc')
             ->with('doc', $doc)
-            ->with('modules', $module)
+            ->with('module', $module)
             ->with('html', $html)
             ->with('config', $config);
     }

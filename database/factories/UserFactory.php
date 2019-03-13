@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
 /*
@@ -13,22 +15,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Models\User::class, function (Faker $faker) {
-
-    // 随机取一个月以内的时间
-    $updated_at = $faker->dateTimeThisMonth();
-    // 传参为生成最大时间不超过，创建时间永远比更改时间要早
-    $created_at = $faker->dateTimeThisMonth($updated_at);
+$factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => bcrypt('secret'), // secret
-        'remember_token' => str_random(10),
-        'mobile' => $faker->unique()->phoneNumber,
-        'gender' => array_random(['男','女']),
-        'location' => $faker->city,
-        'birthday'=>$faker->dateTime,
-        'created_at'=>$created_at,
-        'updated_at'=>$updated_at
+        'email_verified_at' => now(),
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'remember_token' => Str::random(10),
     ];
 });

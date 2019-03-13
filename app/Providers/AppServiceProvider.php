@@ -9,11 +9,11 @@ use Illuminate\Support\Str;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Register any application services.
      *
      * @return void
      */
-    public function boot()
+    public function register()
     {
         // 只在本地开发环境启用 SQL 日志
         if (app()->environment('local')) {
@@ -28,11 +28,11 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register any application services.
+     * Bootstrap any application services.
      *
      * @return void
      */
-    public function register()
+    public function boot()
     {
         //
     }

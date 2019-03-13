@@ -1,9 +1,0 @@
-<?php
-Route::namespace('Common\Http\Handlers')
-    ->group(base_path('modulesgh/Common/routes.php'));
-Route::prefix('blog')
-    ->namespace('Blog\Http\Controllers')
-    ->group(base_path('modulesgh/Blog/routes.php'));
-Route::prefix('shop')
-    ->namespace('Shop\Http\Controllers')
-    ->group(base_path('modulesgh/Shop/routes.php'));

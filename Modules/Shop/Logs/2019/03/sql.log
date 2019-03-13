@@ -1,9 +1,0 @@
-[2019-03-06 16:41:39] local.DEBUG: sql: "insert into `shop_products` (`title`, `price`, `attributes`, `updated_at`, `created_at`) values (456, 50, [{\"id\":\"2\",\"name\":\"\\u5185\\u5b58\\u5927\\u5c0f\"}], 2019-03-06 16:41:39, 2019-03-06 16:41:39)"
-[2019-03-06 16:41:39] local.DEBUG: sql.time: 29.3
-
-[2019-03-06 16:41:45] local.DEBUG: sql: "select * from `shop_products` order by `created_at` desc limit 1"
-[2019-03-06 16:41:45] local.DEBUG: sql.time: 9.25
-
-[2019-03-06 16:41:45] local.DEBUG: sql: "insert into `shop_product_skus` (`title`, `price`, `stock`, `product_id`, `updated_at`, `created_at`) values (111, 20, 100, 1, 2019-03-06 16:41:45, 2019-03-06 16:41:45)"
-[2019-03-06 16:41:45] local.DEBUG: sql.time: 4.2
-

@@ -10,8 +10,8 @@ class DocHandler
     public function __invoke($module, $name)
     {
         // 仅开发环境可以访问
-        if (!(config('app.env') == 'dev' || config('app.env') == 'local')) {
-            return [];
+        if (!app()->environment('local', 'dev')) {
+            return ['blank'];
         }
 
         $doc = base_path('modules/' . Str::title($module) . '/Doc/');

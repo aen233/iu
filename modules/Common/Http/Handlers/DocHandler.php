@@ -2,6 +2,7 @@
 
 namespace Common\Http\Handlers;
 
+use Illuminate\Support\Str;
 use Parsedown;
 
 class DocHandler
@@ -13,7 +14,7 @@ class DocHandler
             return [];
         }
 
-        $doc = base_path('modules/' . $module . '/Doc/');
+        $doc = base_path('modules/' . Str::title($module) . '/Doc/');
 
         $config = file_get_contents($doc . 'config.json');
         $config = json_decode($config, true);

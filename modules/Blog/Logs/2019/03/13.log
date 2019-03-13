@@ -2,3 +2,29 @@
 [2019-03-13 15:01:42] local.DEBUG: Request Method: GET
 [2019-03-13 15:01:42] local.DEBUG: Request Params: 
 
+[2019-03-13 17:16:46] local.DEBUG: Request Url: http://iu.test/blog/doc/index
+[2019-03-13 17:16:46] local.DEBUG: Request Method: GET
+[2019-03-13 17:16:46] local.DEBUG: Request Params: 
+
+[2019-03-13 17:16:46] local.ERROR: Response Error: {"id":"64e51ae9c747c17f8c1e2474ded270dd","code":404,"status":500,"message":"file_get_contents(/Volumes/work/iu/modules/blog/Doc/config.json): failed to open stream: No such file or directory","error":"ERROR"}
+
+[2019-03-13 17:18:37] local.ERROR: Response Error: {"id":"4eab2b255194502075da55885330a9dd","code":404,"status":500,"message":"","error":"ERROR"}
+
+[2019-03-13 17:18:42] local.DEBUG: Request Url: http://iu.test/blog/doc/index
+[2019-03-13 17:18:42] local.DEBUG: Request Method: GET
+[2019-03-13 17:18:42] local.DEBUG: Request Params: 
+
+[2019-03-13 17:18:42] local.ERROR: Response Error: {"id":"b253939dd39e33eb84753fac15dbe220","code":404,"status":500,"message":"file_get_contents(/Volumes/work/iu/modules/blog/Doc/config.json): failed to open stream: No such file or directory","error":"ERROR"}
+
+[2019-03-13 17:19:19] local.DEBUG: Request Url: http://iu.test/blog/doc/index
+[2019-03-13 17:19:19] local.DEBUG: Request Method: GET
+[2019-03-13 17:19:19] local.DEBUG: Request Params: 
+
+[2019-03-13 17:21:08] local.DEBUG: Request Url: http://iu.test/blog/doc/index
+[2019-03-13 17:21:08] local.DEBUG: Request Method: GET
+[2019-03-13 17:21:08] local.DEBUG: Request Params: 
+
+[2019-03-13 17:21:10] local.DEBUG: Request Url: http://iu.test/blog/doc/Article-article-%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8.md
+[2019-03-13 17:21:10] local.DEBUG: Request Method: GET
+[2019-03-13 17:21:10] local.DEBUG: Request Params: 
+

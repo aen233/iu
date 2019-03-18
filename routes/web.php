@@ -12,6 +12,7 @@
 */
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/doc/{name}', 'DocController@index')->name('doc');
+Route::get('pdf', 'PdfController@index')->name('pdf');
 
 Route::get('/', function () {
     return view('welcome');

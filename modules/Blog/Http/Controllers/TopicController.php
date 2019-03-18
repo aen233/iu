@@ -2,9 +2,9 @@
 
 namespace Blog\Http\Controllers;
 
-use App\Exceptions\BaseException;
 use Blog\Models\Topic;
 use App\Models\User;
+use Common\Exceptions\BaseException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +18,7 @@ class TopicController extends Controller
      * @param Topic   $topic
      *
      * @return array
+     * @throws BaseException
      */
     public function index(Request $request, Topic $topic)
     {

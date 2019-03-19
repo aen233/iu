@@ -12,8 +12,14 @@ class PdfController extends Controller
      */
     public function index()
     {
-        $url = request('url');
-        return SnappyPdf::loadFile($url)->inline('report.pdf');
+        $url     = request('url');
+        $options = [
+            'footer-center'    => '【壳保养智慧门店，每天爱车多一点】',
+            'footer-font-size' => 8,
+            'footer-spacing'   => 5,
+            'margin-bottom'    => 20
+        ];
+        return SnappyPdf::loadFile($url)->setOptions($options)->inline('report.pdf');
     }
 
 }

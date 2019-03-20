@@ -14,12 +14,12 @@ class PdfController extends Controller
     {
         $url     = request('url');
         $options = [
-            'footer-center'    => '【壳保养智慧门店，每天爱车多一点】',
+            'footer-center'    => 'qiaopai1234壳牌',
             'footer-font-size' => 8,
             'footer-spacing'   => 5,
             'margin-bottom'    => 20
         ];
-        return SnappyPdf::loadFile($url)->setOption('footer-center','【壳保养智慧门店，每天爱车多一点】')->inline('report.pdf');
+        return SnappyPdf::loadFile($url)->setOptions($options)->inline('report.pdf');
     }
 
 }

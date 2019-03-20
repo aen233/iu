@@ -19,7 +19,7 @@ class PdfController extends Controller
             'footer-spacing'   => 5,
             'margin-bottom'    => 20
         ];
-        return SnappyPdf::loadFile($url)->setOptions($options)->inline('report.pdf');
+        return SnappyPdf::loadFile($url)->setOption('footer-center','【壳保养智慧门店，每天爱车多一点】')->inline('report.pdf');
     }
 
 }

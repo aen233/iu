@@ -13,12 +13,10 @@ class PdfController extends Controller
     public function index()
     {
         $url     = request('url');
-        $options = [
-            'footer-center'    => 'qiaopai1234壳牌',
-            'footer-font-size' => 8,
-            'footer-spacing'   => 5,
-            'margin-bottom'    => 20
-        ];
+        $options = request('options', []);
+
+        $options = $options ? json_decode($options, true) : [];
+
         return SnappyPdf::loadFile($url)->setOptions($options)->inline('report.pdf');
     }
 
